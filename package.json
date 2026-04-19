@@ -1,0 +1,27 @@
+{
+  "name": "stockpulse",
+  "version": "1.0.0",
+  "description": "A stock market analytics web app",
+  "homepage": "https://github.com/MSK-005/stockpulse#readme",
+  "bugs": {
+    "url": "https://github.com/MSK-005/stockpulse/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MSK-005/stockpulse.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/app",
+    "dev": "node --watch --env-file=.env backend/app"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mssql": "^12.2.0"
+  }
+}
