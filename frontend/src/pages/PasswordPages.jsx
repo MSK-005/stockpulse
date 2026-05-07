@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp } from 'lucide-react';
-import api from '../../lib/api';
+import api from '../lib/api';
 import styles from './Auth.module.css';
 
 export function ForgotPasswordPage() {
