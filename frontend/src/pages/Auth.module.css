@@ -1,0 +1,123 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-primary);
+  background-image: radial-gradient(ellipse at 20% 50%, var(--accent-dim) 0%, transparent 60%),
+                    radial-gradient(ellipse at 80% 20%, rgba(74, 158, 255, 0.05) 0%, transparent 60%);
+}
+
+.panel {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.4s ease;
+}
+
+.logoMark {
+  width: 52px;
+  height: 52px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.passWrap {
+  position: relative;
+}
+.passWrap .form-input {
+  padding-right: 40px;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+}
+.eyeBtn:hover { color: var(--text-primary); }
+
+.forgotRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+}
+
+.forgotLink {
+  font-size: 13px;
+  color: var(--accent);
+}
+.forgotLink:hover { text-decoration: underline; }
+
+.errorBanner {
+  background: var(--red-dim);
+  border: 1px solid rgba(240, 64, 96, 0.25);
+  color: var(--red);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.successBanner {
+  background: var(--green-dim);
+  border: 1px solid rgba(0, 200, 150, 0.25);
+  color: var(--green);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.switchText {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.switchLink {
+  color: var(--accent);
+  font-weight: 500;
+}
+.switchLink:hover { text-decoration: underline; }

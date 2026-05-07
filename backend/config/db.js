@@ -1,26 +1,32 @@
-import sql from 'mssql';
+import pg from 'pg';
 
-const config = {
-  server: process.env.DB_SERVER,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.DB_PORT),
-  options: {
-    encrypt: false,
-    trustServerCertificate: true,
+const { Pool } = pg;
+
+if (!process.env.DATABASE_URL) {
+  console.error('FATAL: DATABASE_URL environment variable is not set.');
+  process.exit(1);
+}
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // Required for Supabase
   },
-};
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 5000,
+});
 
-const poolPromise = new sql.ConnectionPool(config)
-  .connect()
-  .then((pool) => {
-    console.log("Connected to SQL Server");
-    return pool;
-  })
-  .catch((err) => {
-    console.error("Database connection failed:", err);
-    process.exit(1);
-  });
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle DB client:', err);
+});
 
-export default poolPromise;
+// Test connection on startup
+pool.query('SELECT NOW()').then(() => {
+  console.log('✅ Connected to Supabase PostgreSQL');
+}).catch((err) => {
+  console.error('❌ Database connection failed:', err.message);
+  process.exit(1);
+});
+
+export default pool;

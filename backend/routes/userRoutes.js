@@ -1,15 +1,31 @@
 import express from 'express';
-import { createUser, getUser, updateUser, deleteUser, loginUser } from '../controllers/userController.js';
+import {
+  createUser,
+  loginUser,
+  logoutUser,
+  getMe,
+  getUser,
+  updateUser,
+  deleteUser,
+  forgotPassword,
+  resetPassword,
+} from '../controllers/userController.js';
+import { verifyToken, verifySelf } from '../middleware/auth.js';
+import { validate, registerSchema, loginSchema, updateUserSchema, forgotPasswordSchema, resetPasswordSchema } from '../middleware/validate.js';
 
 const router = express.Router();
 
-router.post('/register', createUser);
-router.post('/login', loginUser);
+// Public routes
+router.post('/register', validate(registerSchema), createUser);
+router.post('/login', validate(loginSchema), loginUser);
+router.post('/logout', logoutUser);
+router.post('/forgot-password', validate(forgotPasswordSchema), forgotPassword);
+router.post('/reset-password', validate(resetPasswordSchema), resetPassword);
 
-router.get('/:id', getUser);
-
-router.put('/:id', updateUser);
-
-router.delete('/:id', deleteUser);
+// Protected routes
+router.get('/me', verifyToken, getMe);
+router.get('/:id', verifyToken, verifySelf, getUser);
+router.put('/:id', verifyToken, verifySelf, validate(updateUserSchema), updateUser);
+router.delete('/:id', verifyToken, verifySelf, deleteUser);
 
 export default router;

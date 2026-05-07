@@ -1,0 +1,26 @@
+{
+  "name": "stockpulse-backend",
+  "version": "1.0.0",
+  "description": "StockPulse backend API",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch --env-file=.env app.js",
+    "seed": "node --env-file=.env scripts/seed.js",
+    "ingest": "node --env-file=.env scripts/ingest.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.16",
+    "pg": "^8.13.3",
+    "zod": "^3.24.2"
+  }
+}
