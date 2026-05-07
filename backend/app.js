@@ -20,11 +20,11 @@ app.use(helmet());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
-    credentials: true, // Required for cookies
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
+    origin: ["http://localhost:5173", process.env.CLIENT_URL].filter(Boolean),
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
 );
 
 // Global rate limiter: 100 requests per 15 minutes per IP
