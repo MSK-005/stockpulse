@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TrendingUp, Eye, EyeOff } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import styles from './Auth.module.css';
 
 export default function RegisterPage() {
